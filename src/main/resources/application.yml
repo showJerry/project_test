@@ -1,0 +1,65 @@
+spring:
+  application:
+    name: bike-weather-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/dublin_service?useSSL=false&serverTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+# MyBatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.dublin.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+server:
+  port: 8080
+
+# API配置
+api:
+  bike:
+    url: https://api.jcdecaux.com/vls/v1/stations
+    contract: dublin
+    api-key: aa3ce54117ad3292d1e5c7c47dc127aed83b706e
+  weather:
+    url: https://api.openweathermap.org/data/2.5
+    lat: 53.3498006
+    lon: -6.2602964
+    app-id: 92f2d5aed2f3505168e6d87602f68187
+    units: metric
+
+# 定时任务配置
+schedule:
+  bike:
+    cron: "0 */5 * * * ?"  # 每5分钟
+  weather:
+    cron: "0 0 * * * ?"     # 每1小时
+  cleanup:
+    cron: "0 0 2 * * ?"     # 每天凌晨2点清理7天前数据
+
+# Feign配置
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 60000
+        loggerLevel: basic
+
+# 日志配置
+logging:
+  level:
+    com.dublin.feign: DEBUG
+
+# Swagger配置
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true
+    enabled: true

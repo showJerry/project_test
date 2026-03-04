@@ -1,0 +1,345 @@
+{
+  "工作表列表": [
+    "Sheet1"
+  ],
+  "数据": {
+    "Sheet1": [
+      [
+        null,
+        "模块",
+        "Story",
+        "备注",
+        null,
+        null
+      ],
+      [
+        null,
+        "bike",
+        "作为用户，我需要查询自行车站点信息",
+        "1. 接口：https://api.jcdecaux.com/vls/v1/stations",
+        null,
+        "bike 接口相关"
+      ],
+      [
+        null,
+        null,
+        null,
+        "2. 自行车站点数据视为静态数据，默认不变，第一次调接口后，全部入库",
+        null,
+        "接口入参：(应该要读配置？隐藏key, 我不会)"
+      ],
+      [
+        null,
+        null,
+        "作为用户，我需要by站点查询已停车数、空余车位数",
+        "1. 接口：https://api.jcdecaux.com/vls/v1/stations",
+        null,
+        "contract=dublin"
+      ],
+      [
+        null,
+        null,
+        null,
+        "2. 后端每5分钟调接口，拉取最新数据，入库，需要定时任务，数据视为动态数据",
+        null,
+        "apiKey=aa3ce54117ad3292d1e5c7c47dc127aed83b706e"
+      ],
+      [
+        null,
+        null,
+        null,
+        "3. 数据库所有数据保留7天，需要自动删除逻辑",
+        null,
+        "静态站点数据，需入库字段："
+      ],
+      [
+        null,
+        null,
+        null,
+        "4. 后端提供查询接口，供前端map调用",
+        null,
+        "number INTEGER NOT NULL"
+      ],
+      [
+        null,
+        "weather",
+        "作为用户，我需要常驻展示实时天气状况",
+        "1. 接口：https://api.openweathermap.org/data/2.5/weather",
+        null,
+        "address VARCHAR(128)"
+      ],
+      [
+        null,
+        null,
+        null,
+        "2. 后端每1小时调接口，拉取最新数据，入库，需要定时任务",
+        null,
+        "banking INTEGER"
+      ],
+      [
+        null,
+        null,
+        null,
+        "3. 数据库所有数据保留7天，需要自动删除逻辑",
+        null,
+        "bike_stands INTEGER"
+      ],
+      [
+        null,
+        null,
+        null,
+        "4. 后端提供查询接口，供前端map调用，需根据前端查询时刻，找到数据库里最新的天气信息，回传前端",
+        null,
+        "name VARCHAR(128)"
+      ],
+      [
+        null,
+        null,
+        "作为用户，我需要常驻展示未来3天的预报天气状况",
+        "1. 接口：https://api.openweathermap.org/data/2.5/forecast/daily",
+        null,
+        "position_lat FLOAT"
+      ],
+      [
+        null,
+        null,
+        null,
+        "2. 后端每1小时调接口，拉取最新数据，入库，需要定时任务",
+        null,
+        "position_lng FLOAT"
+      ],
+      [
+        null,
+        null,
+        null,
+        "3. 数据库所有数据保留7天，需要自动删除逻辑",
+        null,
+        "动态已停车数、空余车位数，需入库字段："
+      ],
+      [
+        null,
+        null,
+        null,
+        "4. 后端提供查询接口，供前端map调用，需根据前端查询时刻，找到数据库里最新的天气预报，回传前端",
+        null,
+        "number INTEGER NOT NULL"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "last_update DATETIME NOT NULL"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "available_bikes INTEGER"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "available_bikes_stands INTEGER"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "status VARCHAR(128)"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "weather 接口相关"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "实时天气：https://api.openweathermap.org/data/2.5/weather"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "接口入参："
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "\"lat\": \"53.3498006\", \"lon\": \"-6.2602964\", \"appid\": 92f2d5aed2f3505168e6d87602f68187, \"units\": \"metric\""
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "实时天气数据，需入库字段："
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "dt DATETIME NOT NULL"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "main VARCHAR(256)"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "description VARCHAR(256)"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "temp FLOAT"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "wind_speed FLOAT"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "snapshot_time DATETIME, 落库时间"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "预测天气：https://api.openweathermap.org/data/2.5/forecast/daily"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "接口入参："
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "\"lat\": \"53.3498006\", \"lon\": \"-6.2602964\", \"appid\": 92f2d5aed2f3505168e6d87602f68187, \"units\": \"metric\""
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "预测天气数据，需入库字段："
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "future_dt DATETIME NOT NULL"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "main VARCHAR(256)"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "description VARCHAR(256)"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "temp_12 FLOAT"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "temp_min FLOAT"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "temp_max FLOAT"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "wind_speed_max FLOAT"
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "snapshot_time DATETIME, 落库时间"
+      ]
+    ]
+  }
+}
