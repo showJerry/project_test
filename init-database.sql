@@ -12,13 +12,15 @@ USE dublin_service;
 -- ========================================
 DROP TABLE IF EXISTS bike_station;
 CREATE TABLE bike_station (
-    number INTEGER NOT NULL PRIMARY KEY COMMENT '站点编号',
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '主键ID',
+    number INTEGER NOT NULL UNIQUE COMMENT '站点编号',
     address VARCHAR(128) COMMENT '站点地址',
     banking INTEGER COMMENT '是否支持银行卡支付',
     bike_stands INTEGER COMMENT '车位总数',
     name VARCHAR(128) COMMENT '站点名称',
     position_lat FLOAT COMMENT '纬度',
-    position_lng FLOAT COMMENT '经度'
+    position_lng FLOAT COMMENT '经度',
+    INDEX idx_number (number)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='自行车站点静态信息表';
 
 -- ========================================

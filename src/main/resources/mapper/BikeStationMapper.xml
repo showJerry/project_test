@@ -5,7 +5,8 @@
 <mapper namespace="com.dublin.repository.BikeStationRepository">
 
     <resultMap id="BikeStationResultMap" type="com.dublin.entity.BikeStation">
-        <id property="number" column="number"/>
+        <id property="id" column="id"/>
+        <result property="number" column="number"/>
         <result property="address" column="address"/>
         <result property="banking" column="banking"/>
         <result property="bikeStands" column="bike_stands"/>
@@ -14,7 +15,7 @@
         <result property="positionLng" column="position_lng"/>
     </resultMap>
 
-    <insert id="insert" parameterType="com.dublin.entity.BikeStation">
+    <insert id="insert" parameterType="com.dublin.entity.BikeStation" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO bike_station (number, address, banking, bike_stands, name, position_lat, position_lng)
         VALUES (#{number}, #{address}, #{banking}, #{bikeStands}, #{name}, #{positionLat}, #{positionLng})
     </insert>
@@ -29,13 +30,13 @@
     </insert>
 
     <select id="findById" parameterType="int" resultMap="BikeStationResultMap">
-        SELECT number, address, banking, bike_stands, name, position_lat, position_lng
+        SELECT id, number, address, banking, bike_stands, name, position_lat, position_lng
         FROM bike_station
         WHERE number = #{number}
     </select>
 
     <select id="findAll" resultMap="BikeStationResultMap">
-        SELECT number, address, banking, bike_stands, name, position_lat, position_lng
+        SELECT id, number, address, banking, bike_stands, name, position_lat, position_lng
         FROM bike_station
     </select>
 

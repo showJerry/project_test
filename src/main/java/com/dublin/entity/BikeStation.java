@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class BikeStation {
+    private Long id;
     private Integer number;
     private String address;
     private Integer banking;
